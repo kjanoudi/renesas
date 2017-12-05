@@ -33,7 +33,9 @@ provider:
   stage: dev
   profile: serverless
   environment:
-    renesas: https://stg-wp-voice.spindance.net
+    renesas: https://cloud.renesassynergy.com
+    username: kjanoudi@gmail.com
+    password: 2eJTpmYevLb9gzB
 
 # you can overwrite defaults here
 #  stage: dev

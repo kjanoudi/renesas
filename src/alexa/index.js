@@ -4,7 +4,6 @@ import * as intents from '../intents'
 
 export default (event, context, callback) => {
   // TODO: change this to event when switching to lambda
-  // var alexa = Alexa.handler(JSON.parse(event.body), context, callback);
   const alexa = Alexa.handler(event, context, callback);
   const handlerNames = ['GetStatus', 'SetStatus', 'LightStatus']
   const handlers = {}

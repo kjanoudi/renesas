@@ -17,6 +17,9 @@ export default async (request) => {
   }
   if (slots.Switch) {
     const lightsMatching = LIGHTS.filter(light => properties[light] === slots.Switch.toLowerCase())
-    return new Response(`The ${commaAnd(lightsMatching)} lights are ${slots.switch}.`)
+    if (lightsMatching.length) {
+      return new Response(`The ${commaAnd(lightsMatching)} lights on ${slots.Board} are ${slots.Switch}.`)
+    }
+    return new Response(`${slots.Board} has no lights ${slots.Switch}.`)
   }
 }

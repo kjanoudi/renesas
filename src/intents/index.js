@@ -1,2 +1,3 @@
-export { default as getStatus } from './getStatus'
-export { default as setStatus } from './setStatus'
+export { default as GetStatus } from './GetStatus'
+export { default as SetStatus } from './SetStatus'
+export { default as LightStatus } from './LightStatus'

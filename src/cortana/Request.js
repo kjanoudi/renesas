@@ -1,7 +1,7 @@
 import { Request as BaseRequest } from '../lib'
 
 export default class Request extends BaseRequest {
-  initialize(incoming) {
+  constructor(incoming) {
     const slots = {}
     const session = {}
     super(slots, session)

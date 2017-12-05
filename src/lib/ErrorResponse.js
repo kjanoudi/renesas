@@ -1,7 +1,7 @@
 import { default as Response } from './Response'
 
 export default class ErrorResponse extends Response {
-  initialize(error) {
+  constructor(error) {
     super(error.message)
   }
 }

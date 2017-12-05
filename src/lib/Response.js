@@ -1,6 +1,6 @@
 
 export default class Response {
-  initialize(speech) {
+  constructor(speech) {
     this.speech = speech
   }
 }

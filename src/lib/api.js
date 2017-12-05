@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export default class Api {
-  initialize() {
+  constructor() {
     this.axios = axios.create({
       baseURL: process.env.renesas,
       headers: {
@@ -11,15 +11,15 @@ export default class Api {
     })
   }
 
-  login() {
-    const tokenResponse = this.axios.post('/login', {
-      username: process.env.username
+  async login() {
+    const tokenResponse = await this.axios.post('/login', {
+      username: process.env.username,
       password: process.env.password
     })
-    this.axios.headers['Authorization'] = `Bearer ${tokenResponse.data.token}`
+    this.axios.defaults.headers.common['Authorization'] = `Bearer ${tokenResponse.data.token}`
   }
 
-  getStatus(deviceId) {
+  async getStatus(deviceId) {
     const response = {
       "id": "5033012d31363846394e184f51215454",
       "type": null,
@@ -31,7 +31,7 @@ export default class Api {
         "userName": "tushar@renesas.com ",
         "delete": "false"
       },
-      "properties": {
+      properties: {
         "altitude": "544.39",
         "green": "off",
         "yellow": "off",

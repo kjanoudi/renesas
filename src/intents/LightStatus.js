@@ -1,20 +1,22 @@
 import get from 'lodash.get'
-import { Api, Response } from '../../lib'
+import { LIGHTS } from '../lib/constants'
+import { Api, Response } from '../lib'
 
 const commaAnd = (a) => [a.slice(0, -1).join(', '), a.slice(-1)[0]].join(a.length < 2 ? '' : ' and ')
 
-export default (request) => {
+export default async (request) => {
   const api = new Api()
   api.login()
-  const status = api.getStatus(123)
-  const lightsOn = LIGHTS.filter(light => status[light] === 'on')
-  const lightsOff = LIGHTS.filter(light => status[light] === 'off')
-  let speech = ''
-  if (lightsOn.length) {
-    speech += `The ${commaAnd(lightsOn)} lights are on.`
+  const status = await api.getStatus(123)
+  const { properties } = status
+  const { slots } = request
+  console.log('Props: ', properties, slots)
+  if (slots.Light) {
+    const value = properties[slots.Light.toLowerCase()]
+    return new Response(`The ${slots.Light} light is ${value}.`)
   }
-  if (lightsOff.length) {
-    speech += `The ${commaAnd(lightsOn)} lights are off.`
+  if (slots.Switch) {
+    const lightsMatching = LIGHTS.filter(light => properties[light] === slots.Switch.toLowerCase())
+    return new Response(`The ${commaAnd(lightsMatching)} lights are ${slots.switch}.`)
   }
-  return new Response(speech)
 }

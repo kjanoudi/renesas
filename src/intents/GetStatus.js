@@ -1,7 +1,7 @@
 import get from 'lodash.get'
 import { Api, Response } from '../lib'
 
-export default (request) => {
+export default async (request) => {
   const api = new Api()
   api.login()
   const status = await api.getStatus(123)

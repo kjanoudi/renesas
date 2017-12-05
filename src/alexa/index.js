@@ -7,9 +7,9 @@ export default (event, context, callback) => {
   var alexa = Alexa.handler(JSON.parse(event.body), context, callback);
   const handlerNames = ['GetStatus', 'SetStatus', 'LightStatus']
   const handlers = {}
-  handlerNames.forEach(handler => handlers[handler] = function() {
+  handlerNames.forEach(handler => handlers[handler] = async function() {
     const request = new Request(this)
-    const response = intents[handler](request)
+    const response = await intents[handler](request)
     this.emit(':tell', response.speech)
   })
   alexa.registerHandlers(handlers);

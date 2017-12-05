@@ -3,9 +3,8 @@ import Request from './Request'
 import * as intents from '../intents'
 
 export default (event, context, callback) => {
-  // TODO: change this to event when switching to lambda
   const alexa = Alexa.handler(event, context, callback);
-  const handlerNames = ['GetStatus', 'SetStatus', 'LightStatus']
+  const handlerNames = ['GetStatus', 'SetStatus', 'LightStatus', 'Unhandled']
   const handlers = {}
   handlerNames.forEach(handler => handlers[handler] = async function() {
     const request = new Request(this)

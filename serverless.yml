@@ -80,9 +80,7 @@ functions:
   alexa:
     handler: handler.alexa
     events:
-      - http:
-          path: alexa
-          method: post
+      - alexaSkill
   google:
     handler: handler.google
     events:

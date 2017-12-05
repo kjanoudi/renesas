@@ -10,13 +10,13 @@ export default async (request) => {
   const { slots } = request
   const property = get(slots, 'Property')
   if (property === 'temperature') {
-    return `The temperature is ${properties.temperature} degrees fahrenheit.`
+    return `The temperature is ${properties.temperature} degrees fahrenheit on ${slots.Board}.`
   }
   if (property === 'pressure') {
-    return `The pressure is ${properties.pressure} millibars.`
+    return `The pressure is ${properties.pressure} millibars on ${slots.Board}.`
   }
   if (property === 'humidity') {
-    return `The humidity is ${properties.humidity} percent.`
+    return `The humidity is ${properties.humidity} percent on ${slots.Board}.`
   }
   return new Response(speech)
 }

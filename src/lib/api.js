@@ -50,8 +50,8 @@ export default class Api {
     return response
   }
 
-  putStatus(deviceId, payload) {
-    const response = this.axios.put(`/api/devices/${deviceId}/state`, payload)
-    return response
+  async putStatus(deviceId, payload) {
+    // const response = this.axios.put(`/api/devices/${deviceId}/state`, payload)
+    return true
   }
 }

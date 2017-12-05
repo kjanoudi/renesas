@@ -1,6 +1,7 @@
 
 export default class Response {
-  constructor(speech) {
+  constructor(speech, reprompt = null) {
     this.speech = speech
+    this.reprompt = reprompt
   }
 }

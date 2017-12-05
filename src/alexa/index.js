@@ -13,7 +13,11 @@ export default (event, context, callback) => {
       this.emit(':delegate');
     } else {
       const response = await intents[handler](request)
-      this.emit(':tell', response.speech)
+      const speech = this.response.speak(response.speech)
+      if (response.reprompt) {
+        speech.listen(response.reprompt)
+      }
+      this.emit(':responseReady')
     }
   })
   alexa.registerHandlers(handlers);

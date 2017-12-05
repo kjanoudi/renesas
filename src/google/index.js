@@ -1,2 +1,7 @@
-export { default as Request } from './Request'
-export { default as Response } from './Response'
+import Alexa from 'alexa-sdk'
+import Request from './Request'
+import * as intents from '../intents'
+
+export default (event, context, callback) => {
+
+}

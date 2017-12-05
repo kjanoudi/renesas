@@ -1,6 +1,6 @@
 
 export default class Request {
-  constructor(slots, session = null) {
+  constructor(slots) {
     this.slots = slots
   }
 }

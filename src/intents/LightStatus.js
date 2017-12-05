@@ -13,7 +13,7 @@ export default async (request) => {
   console.log('Props: ', properties, slots)
   if (slots.Light) {
     const value = properties[slots.Light.toLowerCase()]
-    return new Response(`The ${slots.Light} light is ${value}.`)
+    return new Response(`The ${slots.Light} light is ${value} on ${slots.Board}.`)
   }
   if (slots.Switch) {
     const lightsMatching = LIGHTS.filter(light => properties[light] === slots.Switch.toLowerCase())

@@ -9,8 +9,12 @@ export default (event, context, callback) => {
   const handlers = {}
   handlerNames.forEach(handler => handlers[handler] = async function() {
     const request = new Request(this)
-    const response = await intents[handler](request)
-    this.emit(':tell', response.speech)
+    if (this.event.request.dialogState !== 'COMPLETED') {
+      this.emit(':delegate');
+    } else {
+      const response = await intents[handler](request)
+      this.emit(':tell', response.speech)
+    }
   })
   alexa.registerHandlers(handlers);
   alexa.execute();
